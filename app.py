@@ -7,4 +7,4 @@ app = Sanic(__name__)
 async def test(request):
     return text('Hello world!')
 
-app.run(host="0.0.0.0", port=8000, debug=True)
+app.run(host="localhost", port=8000, debug=True)
