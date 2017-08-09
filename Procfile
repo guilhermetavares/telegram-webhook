@@ -1,1 +1,1 @@
-web: python app.py
+web: gunicorn telegram.wsgi --log-file -
