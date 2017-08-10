@@ -27,7 +27,7 @@ def send(from_, to, token):
         ],
         'bina': from_
     }
-    return json.loads(requests.post(url, json=data, headers=HEADERS).content)
+    return json.loads(requests.post(url, json=data, headers=HEADERS).content.decode())
 
 
 @app.route("/", methods=["POST", "GET"])
@@ -38,7 +38,7 @@ async def test(request):
 
     token = None
 
-    data = json.loads(request.body)
+    data = json.loads(request.body.decode())
     message = data.get('message', {}).get('text')
     chat_id = data.get('message', {}).get('chat', {}).get('id')
     post_message = 'Please uses /start, /help or /call!'
