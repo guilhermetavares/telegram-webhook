@@ -6,7 +6,7 @@ from sanic.response import text
 
 app = Sanic('app')
 
-@app.route("/")
+@app.route("/", methods=["POST",])
 async def test(request):
 	BASEURL = "https://api.telegram.org/bot"
 	TOKEN = "309262202:AAH2Is4bmUSOqDRzFZFvwEAokUS3iilJ8uA"
