@@ -40,6 +40,10 @@ async def test(request):
 
     data = json.loads(request.body.decode())
     message = data.get('message', {}).get('text')
+
+    if message is None:
+        return text('GET')
+
     chat_id = data.get('message', {}).get('chat', {}).get('id')
     post_message = 'Please uses /start, /help or /call!'
     
@@ -48,6 +52,7 @@ async def test(request):
 /call TOKEN NUMBER_FROM NUMBER_TO'''
     elif '/call' in message:
         try:
+            message = message.replace('  ', ' ')
             action, token, from_n, to_n = message.split(' ')
             post_message = 'call {0} to {1}, wait for the OOOWH AHHHWN WOOOO AAAAHN WAAAAA AAAAAAHN ANN WAAA!'.format(from_n, to_n)
         except:
